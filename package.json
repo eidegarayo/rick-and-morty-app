@@ -1,0 +1,36 @@
+{
+  "name": "rick-and-morty-app",
+  "version": "1.0.0",
+  "description": "Technical Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "postinstall": "cd server && npm install && cd ..",
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eidegarayo/rick-and-morty-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eidegarayo/rick-and-morty-app/issues"
+  },
+  "homepage": "https://github.com/eidegarayo/rick-and-morty-app#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "nodemon": "^2.0.15"
+  }
+}
