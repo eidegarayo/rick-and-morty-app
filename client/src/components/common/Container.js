@@ -24,6 +24,7 @@ const Container = (props) => {
     margin = '0',
     padding = '0',
     maxWidth,
+    align = 'strech',
   } = props;
 
   return (
