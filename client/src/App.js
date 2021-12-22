@@ -1,13 +1,20 @@
 import React from 'react';
 
+import { Container } from './components';
+import {
+  Header,
+  Main,
+  Footer,
+} from './components';
 import Routes from './routes';
-
 
 function App() { 
   return (
-    <div className="App">
+    <Container direction="column">
+      <Header />
       <Routes />
-    </div>
+      <Footer />
+    </Container>
   );
 }
 

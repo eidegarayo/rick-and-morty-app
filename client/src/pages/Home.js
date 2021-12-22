@@ -1,21 +1,26 @@
 import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+import {
+  Container,
+  Header,
+  Main,
+  Footer,
+} from '../components';
+
+const Title = styled.h1`
+  font-size: 100px;
+`;
+
 
 const Home = () => {
-  const [apiMsg, setApimsg] = useState('');
-
-  useEffect(() => {
-    console.log('useEffect')
-    const callAPI = () => {
-      fetch('http://localhost:8080/testAPI')
-        .then(res => res.text())
-        .then(res => setApimsg(res));
-    }
-    callAPI();
-  }, []);
-
   return (
-    <h1>Home: {apiMsg}</h1>
+    <Main>
+      <Container maxWidth padding="20px" margin="0 auto">
+        <Title>Rick & Morty Challenge</Title>
+      </Container>
+    </Main>
   );
 };
 

@@ -8,7 +8,8 @@
     "prestart": "npm install",
     "postinstall": "cd server && npm install && cd ..",
     "start": "node index",
-    "dev": "nodemon index"
+    "dev-server": "nodemon index",
+    "dev-client": "cd client && npm start"
   },
   "repository": {
     "type": "git",

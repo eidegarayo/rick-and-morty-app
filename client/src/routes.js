@@ -8,9 +8,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
-const Router = () => (
+const Router = (props) => (
   <Routes>
-    <Route exact path="/" element={<Home />} />
+    <Route exact path="/" element={<Home {...props} />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
   </Routes>

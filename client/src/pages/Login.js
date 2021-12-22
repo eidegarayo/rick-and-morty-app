@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { login } from '../services/authService';
+import { Container } from '../components';
+import {
+  Header,
+  Main,
+  Footer,
+} from '../components';
+
+import { login } from '../services/api/authService';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -18,22 +25,24 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="text"
-        value={username}
-        placeholder="username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <br />
-      <input
-        type="password"
-        value={password}
-        placeholder="password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Login</button>
-    </form>
+      <Main>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          value={username}
+          placeholder="username"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+        <input
+          type="password"
+          value={password}
+          placeholder="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
+      </Main>
   );
 };
 

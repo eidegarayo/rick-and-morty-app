@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { register } from '../services/authService';
+import { register } from '../services/api/authService';
 
 const Register = () => {
   const [username, setUsername] = useState('');
