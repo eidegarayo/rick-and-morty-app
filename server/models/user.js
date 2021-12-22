@@ -17,13 +17,6 @@ const userSchema = new Schema({
   favourites: [String],
 });
 
-userSchema.methods.toJSON = () => {
-  const user = this;
-  const userObject = user.toObject();
-  delete userObject.password;
-  return userObject;
-};
-
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

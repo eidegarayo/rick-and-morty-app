@@ -23,34 +23,38 @@ const signin = (req, res) => {
   User.findOne({
     username: req.body.username,
   })
-    .exec((err, user) => {
+    .exec((err, data) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
 
-      if (!user) {
+      if (!data) {
         res.status(404).send({ message: 'User not found' });
+        return;
       }
 
       const passwordIsValid = bcrypt.compareSync(
         req.body.password,
-        user.password,
+        data.password,
       );
 
       if (!passwordIsValid) {
-        return res.status(401).send({ message: 'Invalid Password' });
+        res.status(401).send({
+          accessToken: null,
+          message: 'Invalid Password',
+        });
+        return;
       }
 
-      const token = jwt.sign({ id: user.id }, config.secret, {
+      const token = jwt.sign({ id: data.id }, config.secret, {
         expiresIn: 86400, // 24 hours
       });
 
-      req.session.token = token;
-
-      req.status(200).send({
-        id: user._id,
-        username: user.username,
+      delete data.password;
+      res.status(200).send({
+        user: data,
+        accessToken: token,
       });
     });
 };

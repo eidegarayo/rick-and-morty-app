@@ -13,7 +13,7 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     setLoading(true);
-    const responsse = register(username, password);
+    const response = register(username, password);
   }
 
   console.log(process.env)
@@ -33,7 +33,7 @@ const Register = () => {
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Registro</button>
+      <button type="submit">Register</button>
     </form>
   );
 };

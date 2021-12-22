@@ -19,9 +19,23 @@ const register = async (username, password) => {
   }
 };
 
-const login = () => {
+const login = async (username, password) => {
+  const url = `${API_URL}signin`;
 
-}
+  try {
+    const response = await axios({
+      method: 'post',
+      url,
+      headers: { 'Content-Type': 'application/json' },
+      data: { username, password },
+    });
+    const { status, data } = response;
+    return data;
+  } catch (error) {
+    console.log("🚀 ~ file: authService.js ~ line 34 ~ login ~ error", error)
+    return error;
+  }
+};
 
 export {
   register,
