@@ -5,6 +5,6 @@ const controller = require('../controllers/userControllers');
 
 const router = express.Router();
 
-router.get('./user', authJwt, controller);
+router.get('/userbyid', authJwt, controller);
 
 module.exports = router;

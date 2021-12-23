@@ -17,13 +17,13 @@ const getHomeImages = async (req, res) => {
     });
     const { statusText, data } = response;
     if (statusText !== 'OK') {
-      res.status(500).json({ message: 'error' });
+      res.status(500).json({ error: true, message: 'error' });
       return;
     }
     const images = data?.results?.map((item) => item.image);
-    res.status(200).json(images);
+    res.status(200).json({ success: true, images });
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ error: true, message: error });
   }
 };
 

@@ -1,4 +1,7 @@
 import { 
+  USER_BEGIN,
+  USER_FAILURE,
+  USER_SUCCESS,
   REGISTER_BEGIN,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -6,50 +9,80 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-} from '../actions/authActs';
+} from '../actions/accountActs';
 
 
 const initialState = {
   loading: false,
-  loginError: false,
-  registerError: false,
+  logged: false,
+  registerError: '',
+  loginError: '',
   user: null,
   accessToken: null,
+  error: null,
 };
 
 const user = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case USER_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+
+    case USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        logged: true,
+        user: payload.user
+      };
+
+    case USER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: payload.error
+      };
+
     case REGISTER_BEGIN:
       return {
         ...state,
         loading: true,
       };
+
     case REGISTER_SUCCESS:
       return {
         ...state,
         loading: false,
         registerError: false,
       };
+
     case REGISTER_FAIL:
       return {
         ...state,
         loading: false,
         registerError: payload.error,
       };
+
     case LOGIN_BEGIN:
       return {
         ...state,
         loading: true,
       };
+
     case LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
+        logged: true,
         user: payload.user,
         accessToken: payload.accessToken,
       };
+
     case LOGIN_FAIL:
       return {
         ...state,
@@ -58,13 +91,10 @@ const user = (state = initialState, action) => {
         user: null,
         accessToken: null,
       };
+
     case LOGOUT:
-      return {
-        ...state,
-        loading: false,
-        user: null,
-        accessToken: null,
-      };
+      return initialState;
+
     default:
       return state;
   }

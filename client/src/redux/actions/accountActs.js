@@ -1,4 +1,6 @@
-import authService from '../../services/api/authService'
+import authService from '../../services/api/authService';
+import userService from '../../services/api/userService';
+import { session } from '../../services/api/utils';
 
 export const REGISTER_BEGIN = 'REGISTER_BEGIN';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -8,6 +10,10 @@ export const LOGIN_BEGIN = 'LOGIN_BEGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
+
+export const USER_BEGIN = 'USER_BEGIN';
+export const USER_SUCCESS = 'USER_SUCCESS';
+export const USER_FAILURE = 'USER_FAILURE';
 
 const registerBegin = () => ({ type: REGISTER_BEGIN });
 
@@ -40,7 +46,7 @@ const loginBegin = () => ({ type: LOGIN_BEGIN });
 const loginSuccess = (user, accessToken) => ({
   type: LOGIN_SUCCESS,
   payload: {
-    user,
+    login: true,
     accessToken,
   }
 });
@@ -48,6 +54,7 @@ const loginSuccess = (user, accessToken) => ({
 const loginFail = (error) => ({
   type: LOGIN_FAIL,
   payload: {
+    login: false,
     error,
   }
 });
@@ -57,16 +64,51 @@ const login = (username, password) => (dispatch) => {
   authService.login(username, password, (err, res) => {
     if (res) {
       const { user, accessToken } = res;
-      dispatch(loginSuccess(user, accessToken));
+      dispatch(loginSuccess(accessToken));
+      dispatch(userSuccess(user));
     } else {
       dispatch(loginFail(err));
     }
   });
 };
 
-const authActs = {
-  login,
-  register,
+const logout = () => (dispatch) => {
+  session.remove();
+  dispatch({ type: LOGOUT });
+}
+
+const userBegin = () => ({ type: USER_BEGIN });
+
+const userSuccess = (user) => ({
+  type: USER_SUCCESS,
+  payload: {
+    user
+  }
+});
+
+const userFailure = error => ({
+  type: USER_FAILURE,
+  payload: {
+    error
+  }
+});
+
+const getUser = () => (dispatch) => {
+  dispatch(userBegin());
+
+  userService.getUserById((err, res) => {
+    console.log("🚀 ~ file: userActs.js ~ line 24 ~ userService.getUserById ~ res", res)
+    console.log("🚀 ~ file: userActs.js ~ line 24 ~ userService.getUserById ~ err", err)
+    if (res?.success) return dispatch(userSuccess(res.user));
+    return dispatch(userFailure(err.message));
+  });
 };
 
-export default authActs;
+const accountActs = {
+  login,
+  logout,
+  register,
+  getUser,
+};
+
+export default accountActs;

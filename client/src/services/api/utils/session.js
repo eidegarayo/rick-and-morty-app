@@ -1,17 +1,15 @@
-const add = ({ accessToken, userId }) => {
+const add = ({ accessToken }) => {
   if (window && window.localStorage !== null) {
     localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('userId', userId);
     return true;
   }
   return false;
 };
 
 const get = () => {
-  if (localStorage.accessToken && localStorage.userId) {
+  if (localStorage.accessToken) {
     const sessionData = {};
     sessionData.accessToken = localStorage.accessToken;
-    sessionData.userId = localStorage.userId;
     return sessionData;
   }
   return false;
@@ -19,7 +17,6 @@ const get = () => {
 
 const remove = () => {
   if (localStorage.accessToken) localStorage.removeItem('accessToken');
-  if (localStorage.userId) localStorage.removeItem('userId');
   return true;
 };
 

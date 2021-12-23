@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from './components';
 import {
@@ -7,8 +8,15 @@ import {
   Footer,
 } from './components';
 import Routes from './routes';
+import accountActs from './redux/actions/accountActs';
 
-function App() { 
+function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(accountActs.getUser());
+  }, [dispatch]);
+
   return (
     <Container direction="column">
       <Header />

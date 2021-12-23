@@ -7,7 +7,7 @@ const addHeaders = (authRequired) => {
 
   if (authRequired) {
     const sessionData = session.get();
-    headers['x-access-token'] = sessionData.authToken;
+    headers['x-access-token'] = sessionData.accessToken;
   }
 
   return headers;

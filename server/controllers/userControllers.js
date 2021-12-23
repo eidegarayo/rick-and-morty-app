@@ -1,21 +1,18 @@
-const db = require('../models/user');
-
-const User = db.user;
+const User = require('../models/user');
 
 const getUser = (req, res) => {
-console.log("🚀 ~ file: userControllers.js ~ line 6 ~ getUser ~ req", req)
-  const { id } = req.body;
+  const id = req.userId;
   User.findById(id).exec((err, user) => {
     if (err) {
-      res.status(500).send({ message: err });
+      res.status(500).send({ error: true, message: err });
       return;
     }
 
     if (!user) {
-      res.status(404).send({ message: 'User not found' });
+      res.status(404).send({ error: true, message: 'User not found' });
     }
 
-    res.status(200).send({ user });
+    res.status(200).send({ success: true, user });
   });
 };
 

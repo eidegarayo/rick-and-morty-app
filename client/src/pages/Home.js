@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -23,22 +24,28 @@ const SubTitle = styled.p`
 
 
 const Home = () => {
+  const isLoading = useSelector((state) => state.account.loading);
+  const isLogged = useSelector((state) => state.account.logged);
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     getHomeImages((err, res) => {
-      if (res) {
-        const newImages = res.slice(0, 8);
+      if (res?.success) {
+        const newImages = res.images.slice(0, 8);
         setImages(newImages);
       }
     });
   }, []);
 
+  const getSubTitle = () => (isLogged ? 'Go to complete list' : 'Login to see all characters and info');
+
   return (
     <Main>
       <Container maxWidth padding="20px" margin="0 auto" direction="column">
         <Title>Rick & Morty Challenge</Title>
-        <SubTitle>Login to see all characters and info</SubTitle>
+        <SubTitle>
+          {isLoading ? null : getSubTitle()}
+        </SubTitle>
       </Container>
       <ImageList images={images} />
     </Main>
