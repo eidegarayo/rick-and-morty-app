@@ -1,8 +1,11 @@
-/* https://rickandmortyapi.com/documentation
- * Base url: https://rickandmortyapi.com/api
- * "characters": "https://rickandmortyapi.com/api/character",
- * "locations": "https://rickandmortyapi.com/api/location",
- * "episodes": "https://rickandmortyapi.com/api/episode"
- */
+const express = require('express');
 
+const controller = require('../controllers/dataContollers');
 
+const router = express.Router();
+
+router.get('/home-images', controller.getHomeImages);
+router.get('/character-list', controller.getCharacterList);
+router.get('/character/:id', controller.getCharacter);
+
+module.exports = router;

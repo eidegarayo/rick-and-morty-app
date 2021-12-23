@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const testAPIRouter = require('./routes/testAPI');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const dataRoutes = require('./routes/dataRoutes');
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use('/testAPI', testAPIRouter);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/data', dataRoutes);
 
 module.exports = app;
