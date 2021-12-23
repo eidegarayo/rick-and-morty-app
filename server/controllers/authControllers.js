@@ -15,7 +15,7 @@ const signup = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }
-    res.send({ message: 'User was registered successfully' });
+    res.status(200).send({ success: true });
   });
 };
 
@@ -25,12 +25,12 @@ const signin = (req, res) => {
   })
     .exec((err, data) => {
       if (err) {
-        res.status(500).send({ message: err });
+        res.status(500).send({ error: true, message: err });
         return;
       }
 
       if (!data) {
-        res.status(404).send({ message: 'User not found' });
+        res.status(404).send({ error: true, message: 'User not found' });
         return;
       }
 
@@ -41,6 +41,7 @@ const signin = (req, res) => {
 
       if (!passwordIsValid) {
         res.status(401).send({
+          error: true,
           accessToken: null,
           message: 'Invalid Password',
         });
@@ -51,9 +52,13 @@ const signin = (req, res) => {
         expiresIn: 86400, // 24 hours
       });
 
-      delete data.password;
       res.status(200).send({
-        user: data,
+        success: true,
+        user: {
+          _id: data._id,
+          username: data.username,
+          favourites: data.favourites,
+        },
         accessToken: token,
       });
     });

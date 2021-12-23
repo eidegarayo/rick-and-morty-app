@@ -29,7 +29,7 @@ const Logo = styled.img`
 
 
 const Header = (props) => {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
 
   return (
     <Container justify="space-between" maxWidth width="100%" margin="0 auto" padding="20px">

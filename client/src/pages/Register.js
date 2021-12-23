@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { register } from '../services/api/authService';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -13,7 +13,6 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = register(username, password);
   }
 
   console.log(process.env)

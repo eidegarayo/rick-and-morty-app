@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import { Container } from '../components';
 import {
@@ -8,20 +9,17 @@ import {
   Footer,
 } from '../components';
 
-import { login } from '../services/api/authService';
+import authActs from '../redux/actions/authActs';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const { user, accessToken } = await login(username, password);
-    if (accessToken) localStorage.setItem('user', JSON.stringify(accessToken));
-    setLoading(false);
+    console.log(username, password);
+    dispatch(authActs.login(username, password));
   }
 
   return (

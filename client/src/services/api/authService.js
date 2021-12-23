@@ -1,43 +1,48 @@
 import axios from 'axios';
 
+import { addHeaders, catchErrors, catchResponse } from './utils';
+
 const API_URL = 'http://localhost:8080/api/auth/';
 
-const register = async (username, password) => {
+const register = async (username, password, callback) => {
   const url = `${API_URL}signup`;
+  const headers = addHeaders();
   
   try {
     const response = await axios({
       method: 'post',
       url,
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       data: { username, password },
     });
-    return response;
+    return catchResponse.api(response, callback);
   } catch (error) {
     console.log("🚀 ~ file: authService.js ~ line 12 ~ register ~ error", error)
-    return error;
+    return catchErrors.api(error, callback);
   }
 };
 
-const login = async (username, password) => {
+const login = async (username, password, callback) => {
   const url = `${API_URL}signin`;
+  const headers = addHeaders();
 
   try {
     const response = await axios({
-      method: 'post',
       url,
-      headers: { 'Content-Type': 'application/json' },
+      method: 'post',
+      headers,  
       data: { username, password },
     });
-    const { status, data } = response;
-    return data;
+    return catchResponse.auth(response, callback);
   } catch (error) {
     console.log("🚀 ~ file: authService.js ~ line 34 ~ login ~ error", error)
-    return error;
+    return catchErrors.api(error, callback);
   }
 };
 
-export {
+const authService = {
   register,
-  login
+  login,
 };
+
+export default authService;
