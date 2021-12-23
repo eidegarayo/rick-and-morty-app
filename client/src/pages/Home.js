@@ -2,6 +2,8 @@ import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { getHomeImages } from '../services/api/dataService';
+
 import {
   Container,
   Main,
@@ -21,13 +23,24 @@ const SubTitle = styled.p`
 
 
 const Home = () => {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    getHomeImages((err, res) => {
+      if (res) {
+        const newImages = res.slice(0, 8);
+        setImages(newImages);
+      }
+    });
+  }, []);
+
   return (
     <Main>
       <Container maxWidth padding="20px" margin="0 auto" direction="column">
         <Title>Rick & Morty Challenge</Title>
-        <SubTitle>Login to see all characters</SubTitle>
-        <ImageList />
+        <SubTitle>Login to see all characters and info</SubTitle>
       </Container>
+      <ImageList images={images} />
     </Main>
   );
 };
