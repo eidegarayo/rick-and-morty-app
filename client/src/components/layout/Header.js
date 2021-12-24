@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
 import accountActs from '../../redux/actions/accountActs';
@@ -33,19 +33,20 @@ const Logo = styled.img`
 
 
 const Header = (props) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.account.loading);
   const isLogged = useSelector((state) => state.account.logged);
 
   const handleLogout = () => {
     dispatch(accountActs.logout());
-    // redirect to home
+    navigate('/');
   }
 
   const getNavItems = () => (
     isLogged ? (
       <>
-        <NavItem><Link to="#">Character List</Link></NavItem>
+        <NavItem><Link to="/character-list">Character List</Link></NavItem>
         <NavItem onClick={handleLogout}><span>Logout</span></NavItem>
       </>
     ) : (

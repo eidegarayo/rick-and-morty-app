@@ -9,7 +9,7 @@ const ImageList = (props) => {
   return (
     <Container justify="center" margin="0 0 100px">
       {
-        images.map((img) => <img src={img} alt={img} width="300" height="300" />)
+        images.map((img) => <img key={img} src={img} alt={img} width="300" height="300" />)
       }
     </Container>
   );
