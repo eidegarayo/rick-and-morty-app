@@ -14,7 +14,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  favourites: [String],
+  favourites: [Number],
 });
 
 const User = mongoose.model('User', userSchema);

@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import theme from '../styledThemes/customTheme';
-import {
-  Container
-} from '..';
+import { Container, Favourite } from '..';
 
 const ImageContainer = styled.div`
   width: 75px;
@@ -42,10 +40,11 @@ const LinkItem = styled.span`
 const Card = (props) => {
   const { character = {} } = props;
   const { id, image, name, species, status } = character;
-  console.log("🚀 ~ file: Card.js ~ line 33 ~ Card ~ image", image)
+
   return (
     <Container width="31%" direction="column" backgroundColor={theme?.colors?.grey} padding="30px">
       <NameText>{name}</NameText>
+
       <Container wrap="nowrap" alignItems="center" gap="20px" margin="0 0 30px">
         <ImageContainer>
           <img src={image} alt={image} width="70" height="70" />
@@ -55,7 +54,11 @@ const Card = (props) => {
           <li>Status: {status }</li>
         </Ul>
       </Container>
-      <LinkItem><Link to={`/character/${id}`}>LEARN MORE</Link></LinkItem>
+
+      <Container justify="space-between">
+        <LinkItem><Link to={`/character/${id}`}>LEARN MORE</Link></LinkItem>
+        <Favourite id={id}/>
+      </Container>
     </Container>
   );
 };

@@ -7,10 +7,10 @@ export const USER_REMOVE = 'USER_REMOVE';
 
 const userBegin = () => ({ type: USER_BEGIN });
 
-const userSuccess = user => ({
+const userSuccess = user => {console.log(user); return({
   type: USER_SUCCESS,
   user
-});
+});}
 
 const userFailure = error => ({
   type: USER_FAILURE,
@@ -21,20 +21,22 @@ const getUser = () => (dispatch) => {
   dispatch(userBegin());
 
   userService.getUserById((err, res) => {
-    console.log("🚀 ~ file: userActs.js ~ line 24 ~ userService.getUserById ~ res", res)
-    console.log("🚀 ~ file: userActs.js ~ line 24 ~ userService.getUserById ~ err", err)
     if (res?.success) return dispatch(userSuccess(res.user));
     return dispatch(userFailure(err.message));
   });
 };
 
-const removeUser = () => (dispatch) => {
+const updateUser = (data) => (dispatch) => {
+  console.log('-----------------UPDATE USER------------------')
+  userService.saveUserData(data, (err, res) => {
+    if (res?.success) return dispatch(userSuccess(res.data));
+  });
 }
 
 const userActs = {
   userSuccess,
   getUser,
-  removeUser,
+  updateUser,
 };
 
 export default userActs;
