@@ -7,6 +7,8 @@ const API_URL = 'http://localhost:8080/api/user/';
 const getUserById = async (callback) => {
   const url = `${API_URL}userbyid`;
   const headers = addHeaders(true);
+
+  if (!headers[['x-access-token']]) return callback({ error: true, message: 'User not logged' }, null);
   
   try {
     const response = await axios({

@@ -14,7 +14,7 @@ const CharacterGrid = (props) => {
       {
         characterList?.length ? (
           <>
-            {characterList.map((character) => <Card character={character} />)}
+            {characterList.map((character) => <Card key={character.id} character={character} />)}
           </>
         ) : 'Skeleton'
       }

@@ -41,7 +41,7 @@ console.log("🚀 ~ file: dataService.js ~ line 25 ~ getCharacterList ~ page", p
   }
 }
 
-const getCharater = async (id, callback) => {
+const getCharacter = async (id, callback) => {
   // sanitize
   const url = `${API_URL}character/${id}`;
   const needAuth = true;
@@ -55,7 +55,7 @@ const getCharater = async (id, callback) => {
     });
     return catchResponse.api(response, callback);
   } catch (error) {
-    console.log("🚀 ~ file: dataService.js ~ line 50 ~ getCharater ~ error", error)
+    console.log("🚀 ~ file: dataService.js ~ line 50 ~ getCharacter ~ error", error)
     return catchErrors.api(error, callback);
   }
 }
@@ -63,5 +63,5 @@ const getCharater = async (id, callback) => {
 export {
   getHomeImages,
   getCharacterList,
-  getCharater,
+  getCharacter,
 };

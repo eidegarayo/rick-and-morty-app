@@ -19,7 +19,10 @@ const AuthRoute = (props) => {
   const isLogged = useSelector((state) => state.account.logged);
   const isLoading = useSelector((state) => state.account.loading);
   if (isLoading) return 'Loading...';
-  if (!isLoading && !isLogged) return navigate('/');
+  if (!isLoading && !isLogged) {
+    navigate('/');
+    return null;
+  }
 
   return children;
 };
