@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import theme from '../styledThemes/customTheme';
 import { FavouriteIcon } from '../common/icons';
-import userActs from '../../redux/actions/userActs';
+import userActs from '../../redux/actions/accountActs';
 
 const IconContainer = styled.div`
   cursor: pointer;

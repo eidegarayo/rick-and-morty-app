@@ -7,10 +7,10 @@ export const USER_REMOVE = 'USER_REMOVE';
 
 const userBegin = () => ({ type: USER_BEGIN });
 
-const userSuccess = user => {console.log(user); return({
+const userSuccess = user => ({
   type: USER_SUCCESS,
   user
-});}
+});
 
 const userFailure = error => ({
   type: USER_FAILURE,
@@ -27,7 +27,6 @@ const getUser = () => (dispatch) => {
 };
 
 const updateUser = (data) => (dispatch) => {
-  console.log('-----------------UPDATE USER------------------')
   userService.saveUserData(data, (err, res) => {
     if (res?.success) return dispatch(userSuccess(res.data));
   });

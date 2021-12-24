@@ -24,7 +24,6 @@ const getUserById = async (callback) => {
 };
 
 const saveUserData = async (data, callback) => {
-  console.log('----------------- SAVE USER DATA ---------------------')
   const url = `${API_URL}save-user`;
   const headers = addHeaders(true);
 
@@ -35,8 +34,6 @@ const saveUserData = async (data, callback) => {
       headers,
       data,
     });
-    console.log(response)
-    console.log('---------------------------------------')
     return catchResponse.api(response, callback);
   } catch (error) {
     console.log("🚀 ~ file: userService.js ~ line 39 ~ saveUserData ~ error", error)

@@ -102,11 +102,18 @@ const getUser = () => (dispatch) => {
   });
 };
 
+const updateUser = (data) => (dispatch) => {
+  userService.saveUserData(data, (err, res) => {
+    if (res?.success) return dispatch(userSuccess(res.data));
+  });
+};
+
 const accountActs = {
   login,
   logout,
   register,
   getUser,
+  updateUser,
 };
 
 export default accountActs;
