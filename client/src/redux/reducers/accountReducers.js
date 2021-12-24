@@ -13,7 +13,7 @@ import {
 
 
 const initialState = {
-  loading: false,
+  loading: true,
   logged: false,
   registerError: '',
   loginError: '',

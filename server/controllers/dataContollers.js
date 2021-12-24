@@ -38,19 +38,19 @@ const getCharacterList = async (req, res) => {
     });
     const { statusText, data } = response;
     if (statusText !== 'OK') {
-      res.status(500).json({ message: 'error' });
+      res.status(500).json({ error: true, message: 'API error' });
       return;
     }
-    res.status(200).json(data);
+    res.status(200).json({ success: true, data });
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ error: true, message: error });
   }
 };
 
 const getCharacter = async (req, res) => {
   const { id } = req.params;
   if (!id) {
-    res.status(200).send({ message: 'NO id' });
+    res.status(200).send({ error: true, message: 'NO id' });
   }
 
   const url = `${apiUrl}character/${id}`;
@@ -62,12 +62,12 @@ const getCharacter = async (req, res) => {
     });
     const { statusText, data } = response;
     if (statusText !== 'OK') {
-      res.status(500).json({ message: 'error' });
+      res.status(500).json({ error: true, message: 'API error' });
       return;
     }
-    res.status(200).json(data);
+    res.status(200).json({ success: true, data });
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ error: true, message: error });
   }
 };
 

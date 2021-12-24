@@ -15,7 +15,7 @@ const theme = {
     verySmall: '12px', // 12
     small: '14px', // 14
     medium: '16px', // 16
-    large: '24px', // 24
+    large: '20px', // 24
   },
   breakpoints: {
     xs: '0',

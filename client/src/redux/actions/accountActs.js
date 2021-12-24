@@ -97,8 +97,6 @@ const getUser = () => (dispatch) => {
   dispatch(userBegin());
 
   userService.getUserById((err, res) => {
-    console.log("🚀 ~ file: userActs.js ~ line 24 ~ userService.getUserById ~ res", res)
-    console.log("🚀 ~ file: userActs.js ~ line 24 ~ userService.getUserById ~ err", err)
     if (res?.success) return dispatch(userSuccess(res.user));
     return dispatch(userFailure(err.message));
   });

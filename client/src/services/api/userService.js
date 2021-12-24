@@ -14,7 +14,6 @@ const getUserById = async (callback) => {
       url,
       headers,
     });
-    console.log(response);
     return catchResponse.api(response, callback);
   } catch (error) {
     console.log("🚀 ~ file: authService.js ~ line 12 ~ register ~ error", error)

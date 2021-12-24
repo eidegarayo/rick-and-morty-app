@@ -22,6 +22,7 @@ const getHomeImages = async (callback) => {
 }
 
 const getCharacterList = async (page = 0, callback) => {
+console.log("🚀 ~ file: dataService.js ~ line 25 ~ getCharacterList ~ page", page)
   // sanitize
   const url = `${API_URL}character-list?page=${page}`;
   const needAuth = true;
