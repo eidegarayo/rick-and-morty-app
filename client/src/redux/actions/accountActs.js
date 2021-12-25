@@ -34,7 +34,7 @@ const register = (username, password) => (dispatch) => {
   authService.register(username, password, (err, res) => {
     if (res) {
       dispatch(registerSuccess());
-      login(username, password);
+      dispatch(login(username, password));
     } else {
       dispatch(registerFail);
     }
