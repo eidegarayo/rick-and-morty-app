@@ -11,12 +11,18 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: ${props => props.theme.textFont};
+    font-size: ${props => props.theme.fontSizes.medium};
     color: ${props => props.theme.textColor};
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: ${props => props.theme.titleFont};
     font-weight: 500;
     margin: 0;
+  }
+  input, button {
+    line-height: 1.15;
+    font-size: ${props => props.theme.fontSizes.medium};
+    font-family: ${props => props.theme.textFont};
   }
 `;
 
