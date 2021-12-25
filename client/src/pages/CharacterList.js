@@ -22,7 +22,7 @@ const CharacterList = () => {
       if (res?.success) {
         const { info, results } = res.data;
         setCharacterList(results);
-        if (page === 1) setTotalPages(info.pages);
+        setTotalPages(info.pages);
       }
     });
   }, [page]); 
@@ -30,7 +30,7 @@ const CharacterList = () => {
   return (
     <Main>
       <CharacterGrid characterList={characterList} />
-      <Pagination page={page} totalPages={totalPages} onChange={changePage} />
+      <Pagination page={parseInt(page, 10)} totalPages={totalPages} onChange={changePage} />
     </Main>
   );
 };
