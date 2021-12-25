@@ -50,8 +50,8 @@ const Card = (props) => {
           <img src={image} alt={image} width="70" height="70" />
         </ImageContainer>
         <Ul>
-          <li>Species: {species}</li>
-          <li>Status: {status }</li>
+          <li><strong>Species:</strong> {species}</li>
+          <li><strong>Status:</strong> {status }</li>
         </Ul>
       </Container>
 

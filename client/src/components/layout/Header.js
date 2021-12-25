@@ -28,7 +28,7 @@ const NavItem = styled.span`
 `;
 
 const Logo = styled.img`
-  width: 75px;
+  width: 150px;
 `;
 
 

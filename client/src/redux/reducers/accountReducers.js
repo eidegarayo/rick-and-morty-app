@@ -93,7 +93,10 @@ const user = (state = initialState, action) => {
       };
 
     case LOGOUT:
-      return initialState;
+      return {
+        ...initialState,
+        loading: false,
+      };
 
     default:
       return state;
