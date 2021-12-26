@@ -6,7 +6,8 @@ const StyledContainer = styled.div`
   justify-content: ${({ justify }) => justify};
   flex-direction: ${({ direction }) => direction};
   width: ${({ width }) => width};
-  max-width: ${({ maxWidth, theme }) => maxWidth ? theme.mainContentWidth : 'none'};
+  max-width: ${({ maxWidth, theme }) => (maxWidth ? theme.mainContentWidth : 'none')};
+  min-height: ${({ minHeight }) => minHeight};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
   gap: ${({ gap }) => gap};
@@ -29,6 +30,7 @@ const Container = (props) => {
     alignItems = '',
     gap = '0',
     wrap = 'wrap',
+    minHeight = 0,
   } = props;
 
   return (
@@ -39,6 +41,7 @@ const Container = (props) => {
       color={color}
       width={width}
       maxWidth={maxWidth}
+      minHeight={minHeight}
       margin={margin}
       padding={padding}
       gap={gap}

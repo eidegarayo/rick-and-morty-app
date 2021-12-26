@@ -14,10 +14,12 @@ const CharacterList = () => {
   const page = searchParams.get('page') || 1;
   const [characterList, setCharacterList] = useState([]);
   const [totalPages, setTotalPages] = useState(NaN);
+  const [isLoading, setIsLoading] = useState(true);
 
   const changePage = (num) => setSearchParams({ page: num });
 
   useEffect(() => {
+    setIsLoading(true);
     getCharacterList(page, (err, res) => {
       if (res?.success) {
         const { info, results } = res.data;
@@ -25,11 +27,12 @@ const CharacterList = () => {
         setTotalPages(info.pages);
       }
     });
-  }, [page]); 
+    setIsLoading(false);
+  }, [page]);
 
   return (
     <Main>
-      <CharacterGrid characterList={characterList} />
+      <CharacterGrid characterList={characterList} isLoading={isLoading} />
       <Pagination page={parseInt(page, 10)} totalPages={totalPages} onChange={changePage} />
     </Main>
   );

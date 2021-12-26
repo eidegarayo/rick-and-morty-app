@@ -20,6 +20,7 @@ const SubTitle = styled.p`
   font-size: 50px;
   margin-top: 50px;
   text-align: center;
+  min-height: 60px;
 `;
 
 
@@ -47,7 +48,7 @@ const Home = () => {
           {isLoading ? null : getSubTitle()}
         </SubTitle>
       </Container>
-      <ImageList images={images} />
+      <ImageList images={images} isLoading={isLoading} />
     </Main>
   );
 };

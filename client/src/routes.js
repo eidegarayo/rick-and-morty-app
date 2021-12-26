@@ -12,13 +12,21 @@ import Register from './pages/Register';
 import CharacterList from './pages/CharacterList';
 import Character from './pages/Character';
 import Page404 from './pages/Page404';
+import { Container, Main } from './components';
 
 const AuthRoute = (props) => {
   const { children } = props;
   const navigate = useNavigate();
   const isLogged = useSelector((state) => state.account.logged);
   const isLoading = useSelector((state) => state.account.loading);
-  if (isLoading) return 'Loading...';
+  if (isLoading) {
+    return (
+      <Main>
+          <Container maxWidth padding="50px 20px" margin="0 auto" gap="30px" minHeight="600px" />
+
+        </Main>
+    );
+  }
   if (!isLoading && !isLogged) {
     navigate('/');
     return null;

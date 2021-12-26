@@ -20,17 +20,12 @@
   ],
   "rules": {
     "linebreak-style": 0,
+    "react/function-component-definition": 0,
     "react/jsx-filename-extension": "off",
-    "react/jsx-sort-props": [
-      2,
-      {
-        "callbacksLast": true,
-        "shorthandFirst": true,
-        "ignoreCase": true,
-        "reservedFirst": true
-      }
-    ],
+    "react/jsx-sort-props": 0,
     "react/react-in-jsx-scope": "off",
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
+    "import/no-extraneous-dependencies": 0,
     "no-console": [
       2,
       {

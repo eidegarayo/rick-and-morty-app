@@ -25,9 +25,11 @@ app.use('/api/user', userRoutes);
 app.use('/api/data', dataRoutes);
 
 // Heroku
-app.use(express.static(path.resolve(__dirname, '../client/build')));
-app.get('*', (request, response) => {
-  response.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 module.exports = app;
