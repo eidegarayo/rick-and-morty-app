@@ -6,7 +6,9 @@ import styled from 'styled-components';
 import {
   Main,
   Container,
+  Favourite,
 } from '../components';
+
 import { getCharacter } from '../services/api/dataService';
 
 const Title = styled.h1`
@@ -79,6 +81,7 @@ const Character = () => {
               <strong>Number of episodes:</strong> {episode?.length}
             </li>
           </Ul>
+          <Favourite id={parseInt(id, 10)} width="50px" height="50px"/>
         </Container>
       </Container>
     </Main>

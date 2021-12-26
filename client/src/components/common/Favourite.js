@@ -11,12 +11,19 @@ const IconContainer = styled.div`
   cursor: pointer;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  svg {
+    fill: ${({ isFav, theme }) => isFav ? theme.colors.secondaryColor : theme.colors.lightGrey };
+    &:hover {
+      fill: ${({ theme }) => theme.colors.secondaryColor  };
+    }
+  }
 `;
 
 const Favourite = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.account.user);
   const favourites = user?.favourites || [];
+  console.log("🚀 ~ file: Favourite.js ~ line 26 ~ Favourite ~ favourites", favourites)
 
   const { id, width = '25px', height = '25px' } = props;
   const isFav = favourites.includes(id);
@@ -29,8 +36,8 @@ const Favourite = (props) => {
   };
 
   return (
-    <IconContainer width={width} height={height} onClick={onClick}>
-      <FavouriteIcon fill={isFav ? theme.colors.secondaryColor : theme.colors.lightGrey} />
+    <IconContainer width={width} height={height} isFav={isFav} onClick={onClick}>
+      <FavouriteIcon />
     </IconContainer>
   );
 };
