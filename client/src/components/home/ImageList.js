@@ -40,8 +40,8 @@ const ImageList = (props) => {
     <Container maxWidth justify="center" margin="0 auto" padding="0 0 100px" minHeight="600px">
       {
         isLoading ? (
-          loadingItems.map(() => (
-            <SkeletonContainer>
+          loadingItems.map((item, index) => (
+            <SkeletonContainer key={index}>
               <Skeleton height="300px" width="300px" />
             </SkeletonContainer>
           ))
