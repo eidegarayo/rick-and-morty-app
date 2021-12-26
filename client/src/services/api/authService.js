@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 import { addHeaders, catchErrors, catchResponse } from './utils';
+import { config } from './config';
 
-const API_URL = 'http://localhost:8080/api/auth/';
+const API_URL = `${config.baseUrl}auth/`;
 
 const register = async (username, password, callback) => {
   const url = `${API_URL}signup`;

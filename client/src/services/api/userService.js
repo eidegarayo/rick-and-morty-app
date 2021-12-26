@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 import { addHeaders, catchErrors, catchResponse } from './utils';
+import { config } from './config';
 
-const API_URL = 'http://localhost:8080/api/user/';
+const API_URL = `${config.baseUrl}user/`;
 
 const getUserById = async (callback) => {
   const url = `${API_URL}userbyid`;
