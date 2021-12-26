@@ -31,7 +31,7 @@ const Home = () => {
   useEffect(() => {
     getHomeImages((err, res) => {
       if (res?.success) {
-        const newImages = res.images.slice(0, 8);
+        const newImages = res.images.slice(0, 6);
         setImages(newImages);
       }
     });

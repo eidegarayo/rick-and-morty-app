@@ -33,8 +33,6 @@ const Arrow = styled.div`
 
 const Pagination = (props) => {
   const { page, totalPages, onChange } = props;
-  console.log(page > 1)
-  console.log(totalPages > page)
 
   return (
     <Container maxWidth justify="flex-end" margin="0 auto 50px auto">

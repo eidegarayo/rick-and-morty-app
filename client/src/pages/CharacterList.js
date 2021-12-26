@@ -13,7 +13,7 @@ const CharacterList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || 1;
   const [characterList, setCharacterList] = useState([]);
-  const [totalPages, setTotalPages] = useState(null);
+  const [totalPages, setTotalPages] = useState(NaN);
 
   const changePage = (num) => setSearchParams({ page: num });
 
