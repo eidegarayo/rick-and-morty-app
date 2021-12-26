@@ -24,7 +24,7 @@ const ButtonContainer = styled.button`
 `;
 
 const Button = (props) => {
-  const { type, onClick, children} = props
+  const { type, onClick, children } = props;
   return (
     <ButtonContainer
       type={type}

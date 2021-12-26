@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from "react-router-dom";
-import PropTypes from 'prop-types';
+import { useSearchParams } from 'react-router-dom';
 
 import {
   Main,
@@ -8,6 +7,7 @@ import {
   Pagination,
 } from '../components';
 import { getCharacterList } from '../services/api/dataService';
+
 
 const CharacterList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,9 +37,5 @@ const CharacterList = () => {
     </Main>
   );
 };
-
-CharacterList.propTypes = {};
-
-CharacterList.defaultProps = {};
 
 export default CharacterList;

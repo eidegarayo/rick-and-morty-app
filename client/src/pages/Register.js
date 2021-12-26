@@ -24,7 +24,7 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     dispatch(authActs.register(username, password));
-  }
+  };
 
   useEffect(() => {
     if (isLogged) navigate('/');

@@ -40,8 +40,5 @@
     "styled-components": "^5"
   },
   "proxy": "http://localhost:3000",
-  "devDependencies": {
-    "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1"
-  }
+  "devDependencies": {}
 }

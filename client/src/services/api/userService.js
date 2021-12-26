@@ -9,7 +9,7 @@ const getUserById = async (callback) => {
   const headers = addHeaders(true);
 
   if (!headers[['x-access-token']]) return callback({ error: true, message: 'User not logged' }, null);
-  
+
   try {
     const response = await axios({
       method: 'get',
@@ -18,7 +18,7 @@ const getUserById = async (callback) => {
     });
     return catchResponse.api(response, callback);
   } catch (error) {
-    console.log("🚀 ~ file: authService.js ~ line 12 ~ register ~ error", error)
+    console.error('🚀 ~ file: authService.js ~ line 12 ~ register ~ error', error);
     return catchErrors.api(error, callback);
   }
 };
@@ -36,10 +36,10 @@ const saveUserData = async (data, callback) => {
     });
     return catchResponse.api(response, callback);
   } catch (error) {
-    console.log("🚀 ~ file: userService.js ~ line 39 ~ saveUserData ~ error", error)
-    return catchErrors.api(error, callback); 
+    console.error('🚀 ~ file: userService.js ~ line 39 ~ saveUserData ~ error', error);
+    return catchErrors.api(error, callback);
   }
-}
+};
 
 
 const userService = {

@@ -11,14 +11,12 @@ const Title = styled.h2`
   text-align: center;
 `;
 
-const Page404 = () => {
-  return (
-    <Main>
-      <Container maxWidth padding="200px 20px" margin="0 auto" direction="column" height="100vh">
-        <Title>404</Title>
-      </Container>
-    </Main>
-  );
-};
+const Page404 = () => (
+  <Main>
+    <Container maxWidth padding="200px 20px" margin="0 auto" direction="column" height="100vh">
+      <Title>404</Title>
+    </Container>
+  </Main>
+);
 
 export default Page404;

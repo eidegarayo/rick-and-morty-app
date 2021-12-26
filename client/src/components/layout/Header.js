@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
 import accountActs from '../../redux/actions/accountActs';
-import { theme } from '../styledThemes';
 import { Container } from '..';
 
 const Nav = styled.nav`
@@ -14,14 +13,14 @@ const Nav = styled.nav`
 
 const NavItem = styled.span`
   padding: 20px;
-  font-family: ${props => props.theme.textFont};
-  font-size: ${props => props.theme.fontSizes.medium};
+  font-family: ${({ theme }) => theme.textFont};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
   a, span {
-    color: ${props => props.theme.colors.textColor};
+    color: ${({ theme }) => theme.colors.textColor};
     text-decoration: none;
 
     &:hover {
-      color: ${props => props.theme.colors.secondaryColor};
+      color: ${({ theme }) => theme.colors.secondaryColor};
       cursor: pointer;
     }
   }
@@ -32,7 +31,7 @@ const Logo = styled.img`
 `;
 
 
-const Header = (props) => {
+const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.account.loading);
@@ -41,7 +40,7 @@ const Header = (props) => {
   const handleLogout = () => {
     dispatch(accountActs.logout());
     navigate('/');
-  }
+  };
 
   const getNavItems = () => (
     isLogged ? (
@@ -50,12 +49,9 @@ const Header = (props) => {
         <NavItem onClick={handleLogout}><span>Logout</span></NavItem>
       </>
     ) : (
-      <>
-        <NavItem><Link to="/login">Login</Link></NavItem>
-      </>
+      <NavItem><Link to="/login">Login</Link></NavItem>
     )
   );
-  
 
   return (
     <Container justify="space-between" maxWidth width="100%" margin="0 auto" padding="20px">
@@ -64,7 +60,7 @@ const Header = (props) => {
         {isLoading ? null : getNavItems()}
       </Nav>
     </Container>
-  )
+  );
 };
 
 export default Header;

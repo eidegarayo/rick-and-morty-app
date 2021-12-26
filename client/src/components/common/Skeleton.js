@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 const keyFrameSkeleton = keyframes`
@@ -48,5 +49,9 @@ const Skeleton = (props) => {
   );
 };
 
+Skeleton.propTypes = {
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+};
 
 export default Skeleton;

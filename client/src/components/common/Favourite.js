@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import theme from '../styledThemes/customTheme';
-import { FavouriteIcon } from '../common/icons';
+import { FavouriteIcon } from './icons';
 import userActs from '../../redux/actions/accountActs';
 
 const IconContainer = styled.div`
@@ -12,9 +11,9 @@ const IconContainer = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   svg {
-    fill: ${({ isFav, theme }) => isFav ? theme.colors.secondaryColor : theme.colors.lightGrey };
+    fill: ${({ isFav, theme }) => (isFav ? theme.colors.secondaryColor : theme.colors.lightGrey)};
     &:hover {
-      fill: ${({ theme }) => theme.colors.secondaryColor  };
+      fill: ${({ theme }) => theme.colors.secondaryColor};
     }
   }
 `;
@@ -41,8 +40,15 @@ const Favourite = (props) => {
   );
 };
 
-Favourite.propTypes = {};
+Favourite.propTypes = {
+  id: PropTypes.number.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string,
+};
 
-Favourite.defaultProps = {};
+Favourite.defaultProps = {
+  width: '25px',
+  height: '25px',
+};
 
 export default Favourite;

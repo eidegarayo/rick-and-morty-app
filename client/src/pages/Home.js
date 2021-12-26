@@ -1,6 +1,5 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { getHomeImages } from '../services/api/dataService';
@@ -52,9 +51,5 @@ const Home = () => {
     </Main>
   );
 };
-
-Home.propTypes = {};
-
-Home.defaultProps = {};
 
 export default Home;

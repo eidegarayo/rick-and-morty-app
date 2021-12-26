@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const MainContainer = styled.div`
-  background-color: ${props => props.theme.colors.mainBackgroundColor};
-  color: ${props => props.theme.colors.greyText}
+  background-color: ${({ theme }) => theme.colors.mainBackgroundColor};
+  color: ${({ theme }) => theme.colors.greyText};
 `;
 
 const Main = (props) => {
@@ -13,7 +14,11 @@ const Main = (props) => {
     <MainContainer>
       {children}
     </MainContainer>
-  )
-}
+  );
+};
 
-export default Main
+Main.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Main;

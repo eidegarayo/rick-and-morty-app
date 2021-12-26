@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -22,7 +23,6 @@ const Container = (props) => {
     justify = 'flex-start',
     direction = 'row',
     backgroundColor = 'none',
-    color,
     width = '100%',
     margin = '0',
     padding = '0',
@@ -30,7 +30,7 @@ const Container = (props) => {
     alignItems = '',
     gap = '0',
     wrap = 'wrap',
-    minHeight = 0,
+    minHeight = '0',
   } = props;
 
   return (
@@ -38,7 +38,6 @@ const Container = (props) => {
       justify={justify}
       direction={direction}
       backgroundColor={backgroundColor}
-      color={color}
       width={width}
       maxWidth={maxWidth}
       minHeight={minHeight}
@@ -50,7 +49,37 @@ const Container = (props) => {
     >
       {children}
     </StyledContainer>
-  )
+  );
+};
+
+Container.propTypes = {
+  children: PropTypes.node,
+  justify: PropTypes.string,
+  direction: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  width: PropTypes.string,
+  margin: PropTypes.string,
+  padding: PropTypes.string,
+  maxWidth: PropTypes.bool,
+  alignItems: PropTypes.string,
+  gap: PropTypes.string,
+  wrap: PropTypes.string,
+  minHeight: PropTypes.string,
+};
+
+Container.defaultProps = {
+  children: null,
+  justify: 'flex-start',
+  direction: 'row',
+  backgroundColor: 'none',
+  width: '100%',
+  margin: '0',
+  padding: '0',
+  maxWidth: false,
+  alignItems: '',
+  gap: '0',
+  wrap: 'wrap',
+  minHeight: '0',
 };
 
 export default Container;

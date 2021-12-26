@@ -22,7 +22,9 @@ const CharacterGrid = (props) => {
   );
 };
 
-CharacterGrid.propTypes = {};
+CharacterGrid.propTypes = {
+  characterList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
 
 CharacterGrid.defaultProps = {};
 

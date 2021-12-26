@@ -7,13 +7,13 @@ const auth = (response, callback) => {
     session.add({ accessToken, userId: user._id });
     callback(null, response.data);
   }
-}
+};
 
 const api = (response, callback) => {
   const { data } = response;
   if (data.success) return callback(null, data);
   return callback(data, null);
-}
+};
 
 const catchResponse = {
   auth,

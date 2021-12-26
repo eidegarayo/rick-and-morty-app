@@ -16,10 +16,10 @@ const getHomeImages = async (callback) => {
     });
     return catchResponse.api(response, callback);
   } catch (error) {
-    console.log("🚀 ~ file: dataService.js ~ line 14 ~ getHomeImages ~ error", error)
+    console.error('🚀 ~ file: dataService.js ~ line 14 ~ getHomeImages ~ error', error);
     return catchErrors.api(error, callback);
   }
-}
+};
 
 const getCharacterList = async (page = 0, callback) => {
   // sanitize
@@ -35,10 +35,10 @@ const getCharacterList = async (page = 0, callback) => {
     });
     return catchResponse.api(response, callback);
   } catch (error) {
-    console.log("🚀 ~ file: dataService.js ~ line 33 ~ getCharacterList ~ error", error)
+    console.error('🚀 ~ file: dataService.js ~ line 33 ~ getCharacterList ~ error', error);
     return catchErrors.api(error, callback);
   }
-}
+};
 
 const getCharacter = async (id, callback) => {
   // sanitize
@@ -54,10 +54,10 @@ const getCharacter = async (id, callback) => {
     });
     return catchResponse.api(response, callback);
   } catch (error) {
-    console.log("🚀 ~ file: dataService.js ~ line 50 ~ getCharacter ~ error", error)
+    console.error('🚀 ~ file: dataService.js ~ line 50 ~ getCharacter ~ error', error);
     return catchErrors.api(error, callback);
   }
-}
+};
 
 export {
   getHomeImages,

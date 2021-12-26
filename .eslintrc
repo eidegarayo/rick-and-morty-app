@@ -23,9 +23,16 @@
     "react/function-component-definition": 0,
     "react/jsx-filename-extension": "off",
     "react/jsx-sort-props": 0,
+    "react/jsx-one-expression-per-line": 0,
     "react/react-in-jsx-scope": "off",
     "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
     "import/no-extraneous-dependencies": 0,
+    "default-param-last": 0,
+    "object-curly-newline": ["error", {
+      "ObjectPattern": { "multiline": true, "minProperties": 8, "consistent": true },
+      "ImportDeclaration": { "multiline": true, "minProperties": 6, "consistent": true },
+      "ExportDeclaration": { "multiline": true, "minProperties": 4 }
+      }],
     "no-console": [
       2,
       {
@@ -41,31 +48,11 @@
     "fp/no-mutating-assign": "warn",
     "fp/no-delete": "warn",
     "fp/no-this": "warn",
-    "complexity": [
-      "warn",
-      10
-    ],
-    "max-params": [
-      "warn",
-      3
-    ],
-    "max-nested-callbacks": [
-      "warn",
-      2
-    ],
-    "max-depth": [
-      "warn",
-      3
-    ],
-    "max-lines": [
-      "warn",
-      250
-    ],
-    "max-len": [
-      "warn",
-      {
-        "code": 110
-      }
-    ]
+    "complexity": ["warn", 10],
+    "max-params": ["warn", 3],
+    "max-nested-callbacks": ["warn", 2],
+    "max-depth": ["warn", 3],
+    "max-lines": ["warn", 250],
+    "max-len": ["warn", { "code": 110 } ]
   }
 }

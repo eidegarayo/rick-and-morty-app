@@ -1,4 +1,5 @@
-import { 
+/* eslint-disable complexity */
+import {
   USER_BEGIN,
   USER_FAILURE,
   USER_SUCCESS,
@@ -38,14 +39,14 @@ const user = (state = initialState, action) => {
         ...state,
         loading: false,
         logged: true,
-        user: payload.user
+        user: payload.user,
       };
 
     case USER_FAILURE:
       return {
         ...state,
         loading: false,
-        error: payload.error
+        error: payload.error,
       };
 
     case REGISTER_BEGIN:

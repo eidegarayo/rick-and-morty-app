@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
@@ -31,25 +30,36 @@ const ImageContainer = styled.div`
 
 const Character = () => {
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    setIsLoading(true);
     getCharacter(id, (err, res) => {
       if (res?.success) {
         setCharacter(res.data);
       }
-      setIsLoading(false);
     });
   }, [id]);
 
-  const { name, image, gender, species, status, type, created, origin, location, episode } = character;
-  const formatedData = new Date(created).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  const {
+    name,
+    image,
+    gender,
+    species,
+    status,
+    type,
+    created,
+    origin,
+    location,
+    episode,
+  } = character;
+  const formatedData = new Date(created).toLocaleDateString(
+    'en-US',
+    { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+  );
 
   return (
     <Main>
-      <Container maxWidth padding="20px" margin="0 auto" direction="column">
+      <Container maxWidth padding="20px" margin="0 auto" direction="column" minHeight="600px">
         <Title>{name}</Title>
         <Container margin="50px 0" gap="30px">
           <ImageContainer>
@@ -81,15 +91,11 @@ const Character = () => {
               <strong>Number of episodes:</strong> {episode?.length}
             </li>
           </Ul>
-          <Favourite id={parseInt(id, 10)} width="50px" height="50px"/>
+          <Favourite id={parseInt(id, 10)} width="50px" height="50px" />
         </Container>
       </Container>
     </Main>
   );
 };
-
-Character.propTypes = {};
-
-Character.defaultProps = {};
 
 export default Character;

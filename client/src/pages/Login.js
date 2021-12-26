@@ -24,7 +24,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(authActs.login(username, password));
-  }
+  };
 
   useEffect(() => {
     if (isLogged) navigate('/');
@@ -51,7 +51,7 @@ const Login = () => {
             />
             <Button type="submit">LOG IN</Button>
           </form>
-          <Text>Don't have an account?</Text>
+          <Text>Don&apos;t have an account?</Text>
           <LinkButton>
             <Link to="/register">
               Create new

@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
-    "prestart": "npm install",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "prestart": "npm install cd server && npm install",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "start": "node index",
     "dev-server": "nodemon index",
     "dev-client": "cd client && npm start"
@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/eidegarayo/rick-and-morty-app#readme",
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "cd": "^0.3.3",
+    "dotenv": "^10.0.0",
+    "server": "file:server"
   },
   "devDependencies": {
     "eslint": "^8.5.0",

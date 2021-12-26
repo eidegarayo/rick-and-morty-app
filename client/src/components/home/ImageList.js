@@ -9,20 +9,27 @@ const SkeletonContainer = styled.div`
 `;
 
 const Img = (props) => {
-  const { width, height } = props;
+  const { width, height, src, alt } = props;
   const [isLoading, setIsLoading] = useState(true);
-  const src = isLoading ? 'placeholder.jpeg' : props.src;
-  const alt = isLoading ? '' : props.alt;
+  const imgSrc = isLoading ? 'placeholder.jpeg' : src;
+  const imgAlt = isLoading ? '' : alt;
 
   return (
     <img
-      src={src}
-      alt={alt}
+      src={imgSrc}
+      alt={imgAlt}
       height={height}
       width={width}
       onLoad={() => setIsLoading(false)}
     />
   );
+};
+
+Img.propTypes = {
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
 };
 
 const ImageList = (props) => {
@@ -50,7 +57,5 @@ ImageList.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
-
-ImageList.defaultProps = {};
 
 export default ImageList;

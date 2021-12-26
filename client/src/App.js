@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { Container } from './components';
 import {
   Header,
-  Main,
+  Container,
   Footer,
 } from './components';
 import Routes from './routes';
 import accountActs from './redux/actions/accountActs';
+
 
 function App() {
   const dispatch = useDispatch();

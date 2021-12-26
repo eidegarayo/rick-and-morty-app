@@ -16,7 +16,7 @@ const ImageContainer = styled.div`
 
 const NameText = styled.h3`
   margin-bottom: 30px;
-  font-size: ${({ theme }) => theme.fontSizes.large};
+  font-size: theme.fontSizes.large;
   color: #fff;
 `;
 
@@ -57,13 +57,21 @@ const Card = (props) => {
 
       <Container justify="space-between">
         <LinkItem><Link to={`/character/${id}`}>LEARN MORE</Link></LinkItem>
-        <Favourite id={id}/>
+        <Favourite id={id} />
       </Container>
     </Container>
   );
 };
 
-Card.propTypes = {};
+Card.propTypes = {
+  character: PropTypes.shape({
+    id: PropTypes.number,
+    image: PropTypes.string,
+    name: PropTypes.string,
+    species: PropTypes.string,
+    status: PropTypes.string,
+  }).isRequired,
+};
 
 Card.defaultProps = {};
 

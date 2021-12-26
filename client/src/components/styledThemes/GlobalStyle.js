@@ -10,19 +10,19 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
-    font-family: ${props => props.theme.textFont};
-    font-size: ${props => props.theme.fontSizes.medium};
-    color: ${props => props.theme.textColor};
+    font-family: ${({ theme }) => theme.textFont};
+    font-size: ${({ theme }) => theme.fontSizes.medium};
+    color: ${({ theme }) => theme.textColor};
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: ${props => props.theme.titleFont};
+    font-family: ${({ theme }) => theme.titleFont};
     font-weight: 500;
     margin: 0;
   }
   input, button {
     line-height: 1.15;
-    font-size: ${props => props.theme.fontSizes.medium};
-    font-family: ${props => props.theme.textFont};
+    font-size: ${({ theme }) => theme.fontSizes.medium};
+    font-family: ${({ theme }) => theme.textFont};
   }
 `;
 
