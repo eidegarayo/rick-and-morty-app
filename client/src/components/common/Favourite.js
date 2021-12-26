@@ -23,7 +23,6 @@ const Favourite = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.account.user);
   const favourites = user?.favourites || [];
-  console.log("🚀 ~ file: Favourite.js ~ line 26 ~ Favourite ~ favourites", favourites)
 
   const { id, width = '25px', height = '25px' } = props;
   const isFav = favourites.includes(id);

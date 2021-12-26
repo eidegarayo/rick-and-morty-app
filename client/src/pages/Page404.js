@@ -1,14 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+import {
+  Container,
+  Main,
+} from '../components';
+
+const Title = styled.h2`
+  font-size: 200px;
+  text-align: center;
+`;
 
 const Page404 = () => {
   return (
-    <h1>Page404</h1>
+    <Main>
+      <Container maxWidth padding="200px 20px" margin="0 auto" direction="column" height="100vh">
+        <Title>404</Title>
+      </Container>
+    </Main>
   );
 };
-
-Page404.propTypes = {};
-
-Page404.defaultProps = {};
 
 export default Page404;
