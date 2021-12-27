@@ -26,3 +26,8 @@ export const LinkButton = styled.span`
     text-decoration: none;
   }
 `;
+
+export const ErrorText = styled.p`
+color: ${({ theme }) => theme.colors.error};
+height: 20px;
+`;

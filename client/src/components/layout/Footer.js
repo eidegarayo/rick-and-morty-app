@@ -6,7 +6,7 @@ import { Container } from '..';
 
 const Footer = () => (
   <Container backgroundColor={theme.colors.footerBackgroundColor}>
-    <Container maxWidth margin="0 auto" padding="50px 20px" justify="center">
+    <Container contentWidth margin="0 auto" padding="50px 20px" justify="center">
       <Link to="https://github.com/eidegarayo" rel="noopener noreferrer">
         <svg
           version="1.1"

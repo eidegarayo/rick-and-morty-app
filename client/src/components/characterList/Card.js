@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import theme from '../styledThemes/customTheme';
-import { Container, Favourite } from '..';
+import { Container, Favourite, Img } from '..';
 
 const ImageContainer = styled.div`
   width: 75px;
@@ -37,29 +37,41 @@ const LinkItem = styled.span`
   }
 `;
 
+const CardContainer = styled.div`
+  width: 100%;
+  @media (min-width: theme.breakpoints.s) {
+    width: 47%;
+  }
+  @media (min-width: theme.breakpoints.md) {
+    width: 31%;
+  }
+`;
+
 const Card = (props) => {
   const { character = {} } = props;
   const { id, image, name, species, status } = character;
 
   return (
-    <Container width="31%" direction="column" backgroundColor={theme?.colors?.grey} padding="30px">
-      <NameText>{name}</NameText>
+    <CardContainer>
+      <Container direction="column" backgroundColor={theme?.colors?.grey} padding="30px">
+        <NameText>{name}</NameText>
 
-      <Container wrap="nowrap" alignItems="center" gap="20px" margin="0 0 30px">
-        <ImageContainer>
-          <img src={image} alt={image} width="70" height="70" />
-        </ImageContainer>
-        <Ul>
-          <li><strong>Species:</strong> {species}</li>
-          <li><strong>Status:</strong> {status }</li>
-        </Ul>
-      </Container>
+        <Container wrap="nowrap" alignItems="center" gap="20px" margin="0 0 30px">
+          <ImageContainer>
+            <Img src={image} alt={image} width="70" height="70" />
+          </ImageContainer>
+          <Ul>
+            <li><strong>Species:</strong> {species}</li>
+            <li><strong>Status:</strong> {status }</li>
+          </Ul>
+        </Container>
 
-      <Container justify="space-between">
-        <LinkItem><Link to={`/character/${id}`}>LEARN MORE</Link></LinkItem>
-        <Favourite id={id} />
+        <Container justify="space-between">
+          <LinkItem><Link to={`/character/${id}`}>LEARN MORE</Link></LinkItem>
+          <Favourite id={id} />
+        </Container>
       </Container>
-    </Container>
+    </CardContainer>
   );
 };
 

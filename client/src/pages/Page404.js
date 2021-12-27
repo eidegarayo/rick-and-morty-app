@@ -13,7 +13,7 @@ const Title = styled.h2`
 
 const Page404 = () => (
   <Main>
-    <Container maxWidth padding="200px 20px" margin="0 auto" direction="column" height="100vh">
+    <Container contentWidth padding="200px 20px" margin="0 auto" direction="column" height="100vh">
       <Title>404</Title>
     </Container>
   </Main>

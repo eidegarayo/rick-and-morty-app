@@ -5,7 +5,10 @@ const auth = (error, callback) => {
   return callback(error.message, null);
 };
 
-const api = (error, callback) => callback(error.message, null);
+const api = (error, callback) => {
+console.log("*********************************************", error)
+  callback(error.message, null);
+}
 
 const catchResponse = {
   auth,

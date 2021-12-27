@@ -54,7 +54,7 @@ const Header = () => {
   );
 
   return (
-    <Container justify="space-between" maxWidth width="100%" margin="0 auto" padding="20px">
+    <Container justify="space-between" contentWidth width="100%" margin="0 auto" padding="20px">
       <Link to="/"><Logo src="/logo.svg" alt="log" /></Link>
       <Nav>
         {isLoading ? null : getNavItems()}

@@ -35,7 +35,7 @@ const Pagination = (props) => {
   const { page, totalPages, onChange } = props;
 
   return (
-    <Container maxWidth justify="flex-end" margin="0 auto 50px auto">
+    <Container contentWidth justify="flex-end" margin="0 auto 50px auto">
       {
         page > 1 && (
           <Arrow onClick={() => onChange(page - 1)}>

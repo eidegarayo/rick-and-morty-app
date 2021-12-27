@@ -7,13 +7,10 @@ import {
   Container,
   Favourite,
 } from '../components';
+import { Title } from '../components/common/styledComponents';
 
 import { getCharacter } from '../services/api/dataService';
 
-const Title = styled.h1`
-  font-size: 100px;
-  text-align: center;
-`;
 
 const Ul = styled.ul`
   list-style-type: none;
@@ -59,7 +56,7 @@ const Character = () => {
 
   return (
     <Main>
-      <Container maxWidth padding="20px" margin="0 auto" direction="column" minHeight="600px">
+      <Container contentWidth padding="20px" margin="0 auto" direction="column" minHeight="600px">
         <Title>{name}</Title>
         <Container margin="50px 0" gap="30px">
           <ImageContainer>

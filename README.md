@@ -25,3 +25,6 @@ PORT=XXXX
 URL_DB=mongodb://<HOST>.<PORT>/<DB_NAME>
 SECRET=XXXXXXXXXXXXXXXXXX
 ```
+
+## Consume from the public API:
+[Rick & Morty](https://rickandmortyapi.com)

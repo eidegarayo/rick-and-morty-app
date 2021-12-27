@@ -9,18 +9,7 @@ import {
   Main,
   ImageList,
 } from '../components';
-
-const Title = styled.h1`
-  font-size: 100px;
-  text-align: center;
-`;
-
-const SubTitle = styled.p`
-  font-size: 50px;
-  margin-top: 50px;
-  text-align: center;
-  min-height: 60px;
-`;
+import { Title, SubTitle } from '../components/common/styledComponents';
 
 
 const Home = () => {
@@ -41,7 +30,7 @@ const Home = () => {
 
   return (
     <Main>
-      <Container maxWidth padding="20px" margin="0 auto" direction="column">
+      <Container contentWidth padding="20px" margin="0 auto" direction="column">
         <Title>Rick & Morty Challenge</Title>
         <SubTitle>
           {isLoading ? null : getSubTitle()}

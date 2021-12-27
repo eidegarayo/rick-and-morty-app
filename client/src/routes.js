@@ -23,7 +23,7 @@ const AuthRoute = (props) => {
   if (isLoading) {
     return (
       <Main>
-        <Container maxWidth padding="50px 20px" margin="0 auto" gap="30px" minHeight="600px" />
+        <Container contentWidth padding="50px 20px" margin="0 auto" gap="30px" minHeight="600px" />
       </Main>
     );
   }

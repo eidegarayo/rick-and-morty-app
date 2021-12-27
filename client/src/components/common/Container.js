@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
   justify-content: ${({ justify }) => justify};
   flex-direction: ${({ direction }) => direction};
   width: ${({ width }) => width};
-  max-width: ${({ maxWidth, theme }) => (maxWidth ? theme.mainContentWidth : 'none')};
+  max-width: ${({ contentWidth, maxWidth, theme }) => (contentWidth ? theme.mainContentWidth : maxWidth)};
   min-height: ${({ minHeight }) => minHeight};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
@@ -22,11 +22,12 @@ const Container = (props) => {
     children,
     justify = 'flex-start',
     direction = 'row',
-    backgroundColor = 'none',
+    backgroundColor = 'initial',
     width = '100%',
     margin = '0',
     padding = '0',
-    maxWidth,
+    contentWidth,
+    maxWidth = 'none',
     alignItems = '',
     gap = '0',
     wrap = 'wrap',
@@ -39,6 +40,7 @@ const Container = (props) => {
       direction={direction}
       backgroundColor={backgroundColor}
       width={width}
+      contentWidth={contentWidth}
       maxWidth={maxWidth}
       minHeight={minHeight}
       margin={margin}
@@ -58,9 +60,10 @@ Container.propTypes = {
   direction: PropTypes.string,
   backgroundColor: PropTypes.string,
   width: PropTypes.string,
+  maxWidth: PropTypes.string,
   margin: PropTypes.string,
   padding: PropTypes.string,
-  maxWidth: PropTypes.bool,
+  contentWidth: PropTypes.bool,
   alignItems: PropTypes.string,
   gap: PropTypes.string,
   wrap: PropTypes.string,
@@ -71,11 +74,12 @@ Container.defaultProps = {
   children: null,
   justify: 'flex-start',
   direction: 'row',
-  backgroundColor: 'none',
+  backgroundColor: 'initial',
   width: '100%',
+  maxWidth: 'none',
   margin: '0',
   padding: '0',
-  maxWidth: false,
+  contentWidth: false,
   alignItems: '',
   gap: '0',
   wrap: 'wrap',

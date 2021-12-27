@@ -52,13 +52,14 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        registerError: '',
       };
 
     case REGISTER_SUCCESS:
       return {
         ...state,
         loading: false,
-        registerError: false,
+        registerError: '',
       };
 
     case REGISTER_FAIL:
@@ -72,6 +73,7 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        loginError: '',
       };
 
     case LOGIN_SUCCESS:

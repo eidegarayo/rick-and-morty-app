@@ -106,7 +106,7 @@ const register = (username, password) => (dispatch) => {
       dispatch(registerSuccess());
       dispatch(login(username, password));
     } else {
-      dispatch(registerFail);
+      dispatch(registerFail(err));
     }
   });
 };
