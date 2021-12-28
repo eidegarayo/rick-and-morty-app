@@ -4,14 +4,15 @@
   "description": "Technical Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "prestart": "npm install cd server && npm install",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "start": "node index",
     "dev-server": "nodemon index",
-    "dev-client": "cd client && npm start"
+    "dev-client": "cd client && npm start",
+    "test": "jest --verbose  --detectOpenHandles",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "server": "file:server"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.5.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-fp": "^2.3.0",
@@ -36,6 +38,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "nodemon": "^2.0.15"
+    "jest": "^27.4.5",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
   }
 }
