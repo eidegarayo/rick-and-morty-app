@@ -17,6 +17,15 @@ const userSchema = new Schema({
   favourites: [Number],
 });
 
+userSchema.set('toJSON', {
+  transform: (doc, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
+    delete returnedObject.password;
+  },
+});
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -29,11 +29,11 @@ const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' });
 };
 
-app.use(unknownEndpoint);
 
 app.use('/testAPI', testAPIRouter);
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/data', dataRoutes);
+app.use(unknownEndpoint);
 
 module.exports = app;

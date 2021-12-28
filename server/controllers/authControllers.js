@@ -54,11 +54,7 @@ const signin = (req, res) => {
 
       res.status(200).send({
         success: true,
-        user: {
-          _id: data._id,
-          username: data.username,
-          favourites: data.favourites,
-        },
+        user: data,
         accessToken: token,
       });
     });
