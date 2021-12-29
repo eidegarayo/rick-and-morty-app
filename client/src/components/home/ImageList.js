@@ -17,6 +17,7 @@ const ImageList = (props) => {
       {
         isLoading ? (
           loadingItems.map((item, index) => (
+            // eslint-disable-next-line react/no-array-index-key
             <SkeletonContainer key={index}>
               <Skeleton height="300px" width="300px" />
             </SkeletonContainer>

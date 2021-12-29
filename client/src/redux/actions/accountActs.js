@@ -43,7 +43,7 @@ const getUser = () => (dispatch) => {
 
 const updateUser = (data) => (dispatch) => {
   userService.saveUserData(data, (err, res) => {
-    if (res?.success) return dispatch(userSuccess(res.data));
+    if (res?.success) dispatch(userSuccess(res.data));
   });
 };
 

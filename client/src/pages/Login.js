@@ -31,20 +31,19 @@ const Login = () => {
     setErrorLogin(loginError);
   }, [loginError]);
 
-  const onChange  = (path, value) => {
-    setErrors({ ...errors, [path]: ''});
+  const onChange = (path, value) => {
+    setErrors({ ...errors, [path]: '' });
     setErrorLogin('');
-    setUserData({...userData, [path]: value});
-  }
-  
+    setUserData({ ...userData, [path]: value });
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const { username, password } = userData;
     const newErrors = { username: '', password: '' };
     if (username && password) {
       dispatch(authActs.login(username, password));
-    }
-    else {
+    } else {
       if (!username) newErrors.username = 'Required field';
       if (!password) newErrors.password = 'Required field';
     }

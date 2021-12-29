@@ -23,7 +23,7 @@ const remove = () => {
 const session = {
   add,
   get,
-  remove
+  remove,
 };
 
 export default session;

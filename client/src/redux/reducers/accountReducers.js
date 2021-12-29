@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import {
   USER_BEGIN,
   USER_FAILURE,
