@@ -6,10 +6,10 @@
   "scripts": {
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
-    "prestart": "npm install cd server && npm install",
+    "prestart": "cd server && npm install",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "start": "cross-env NODE_ENV=production node index",
-    "dev-server": "cross-env NODE_ENV=development nodemon index",
+    "start": "cross-env NODE_ENV=production cd server && node index",
+    "dev-server": "cross-env NODE_ENV=development nodemon ./server/index",
     "dev-client": "cd client && npm start",
     "test": "cross-env NODE_ENV=test jest --verbose  --runInBand",
     "test:watch": "npm run test -- --watch"
@@ -24,22 +24,8 @@
     "url": "https://github.com/eidegarayo/rick-and-morty-app/issues"
   },
   "homepage": "https://github.com/eidegarayo/rick-and-morty-app#readme",
-  "dependencies": {
-    "cd": "^0.3.3",
-    "dotenv": "^10.0.0",
-    "server": "file:server"
-  },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "eslint": "^8.5.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^27.4.5",
-    "nodemon": "^2.0.15",
-    "supertest": "^6.1.6"
+    "nodemon": "^2.0.15"
   }
 }

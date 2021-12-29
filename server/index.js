@@ -1,10 +1,11 @@
 const path = require('path');
 require('dotenv').config();
 
-const dbConfig = require('./server/config/dbConfig');
-const app = require('./server/app');
+const dbConfig = require('./config/dbConfig');
+const app = require('./app');
 
 const { PORT, URL_DB, URL_DB_TEST, NODE_ENV } = process.env;
+console.log("🚀 ~ file: index.js ~ line 8 ~ process.env", process.env)
 const MONGODB_URI = NODE_ENV === 'test' ? URL_DB_TEST : URL_DB;
 
 global.__BASE = path.join(__dirname, 'server');
