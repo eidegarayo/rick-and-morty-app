@@ -67,7 +67,11 @@ const getCharacter = async (req, res) => {
     }
     res.status(200).json({ success: true, data });
   } catch (error) {
-    res.status(500).json({ error: true, message: error });
+    if (error.response && error.response.status === '404') {
+      res.status(400).send({ error: true, message: 'wrong id' });
+    } else {
+      res.status(500).json({ error: true, message: error });
+    }
   }
 };
 

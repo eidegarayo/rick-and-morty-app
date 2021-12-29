@@ -8,10 +8,10 @@
     "install-client": "cd client && npm install",
     "prestart": "npm install cd server && npm install",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "start": "node index",
-    "dev-server": "nodemon index",
+    "start": "cross-env NODE_ENV=production node index",
+    "dev-server": "cross-env NODE_ENV=development nodemon index",
     "dev-client": "cd client && npm start",
-    "test": "jest --verbose  --detectOpenHandles",
+    "test": "cross-env NODE_ENV=test jest --verbose  --runInBand",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {

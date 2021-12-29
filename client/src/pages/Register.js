@@ -18,24 +18,24 @@ import authActs from '../redux/actions/accountActs';
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogged, registerError } = useSelector((state) => state.account);
+  const { logged, registerError } = useSelector((state) => state.account);
   const [userData, setUserData] = useState({ username: '', password: '' });
   const [errors, setErrors] = useState({ username: '', password: '' });
   const [errorRegister, setErrorRegister] = useState(registerError);
 
   useEffect(() => {
-    if (isLogged) navigate('/');
-  }, [isLogged, navigate]);
+    if (logged) navigate('/');
+  }, [logged, navigate]);
 
   useEffect(() => {
     setErrorRegister(registerError);
   }, [registerError]);
 
-  const onChange  = (path, value) => {
-    setErrors({ ...errors, [path]: ''});
+  const onChange = (path, value) => {
+    setErrors({ ...errors, [path]: '' });
     setErrorRegister('');
-    setUserData({...userData, [path]: value});
-  }
+    setUserData({ ...userData, [path]: value });
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -43,8 +43,7 @@ const Register = () => {
     const newErrors = { username: '', password: '' };
     if (username && password) {
       dispatch(authActs.register(username, password));
-    }
-    else {
+    } else {
       if (!username) newErrors.username = 'Required field';
       if (!password) newErrors.password = 'Required field';
     }

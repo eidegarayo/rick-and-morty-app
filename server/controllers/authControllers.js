@@ -10,13 +10,14 @@ const signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8),
   });
 
-  user.save((err) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
-    res.status(200).send({ success: true });
-  });
+  user
+    .save()
+    .then(() => {
+      res.status(200).send({ success: true });
+    })
+    .catch((err) => {
+      res.status(500).send({ error: true, message: err });
+    });
 };
 
 const signin = (req, res) => {
