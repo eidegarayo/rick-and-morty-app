@@ -19,6 +19,7 @@
     "react"
   ],
   "rules": {
+    "react/display-name": [0, { "ignoreTranspilerName": true }],
     "linebreak-style": 0,
     "react/function-component-definition": 0,
     "react/jsx-filename-extension": "off",
