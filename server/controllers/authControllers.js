@@ -20,45 +20,44 @@ const signup = (req, res) => {
     });
 };
 
-const signin = (req, res) => {
-  User.findOne({
-    username: req.body.username,
-  })
-    .exec((err, data) => {
-      if (err) {
-        res.status(500).send({ error: true, message: err });
-        return;
-      }
+const signin = async (req, res) => {
+  try {
+    const data = await User.findOne({ username: req.body.username }).exec();
+    console.log("🚀 ~ file: authControllers.js ~ line 26 ~ signin ~ data", data)
+    if (!data) {
+      res.status(404).send({ error: true, message: 'User not found' });
+      return;
+    }
 
-      if (!data) {
-        res.status(404).send({ error: true, message: 'User not found' });
-        return;
-      }
+    const passwordIsValid = bcrypt.compareSync(
+      req.body.password,
+      data.password,
+    );
+    console.log("🚀 ~ file: authControllers.js ~ line 36 ~ signin ~ passwordIsValid", passwordIsValid)
 
-      const passwordIsValid = bcrypt.compareSync(
-        req.body.password,
-        data.password,
-      );
-
-      if (!passwordIsValid) {
-        res.status(401).send({
-          error: true,
-          accessToken: null,
-          message: 'Invalid Password',
-        });
-        return;
-      }
-
-      const token = jwt.sign({ id: data.id }, config.secret, {
-        expiresIn: 86400, // 24 hours
+    if (!passwordIsValid) {
+      res.status(401).send({
+        error: true,
+        accessToken: null,
+        message: 'Invalid Password',
       });
+      return;
+    }
 
-      res.status(200).send({
-        success: true,
-        user: data,
-        accessToken: token,
-      });
+    const token = jwt.sign({ id: data.id }, config.secret, {
+      expiresIn: 86400, // 24 hours
     });
+    console.log("🚀 ~ file: authControllers.js ~ line 50 ~ signin ~ token", token)
+
+    res.status(200).send({
+      success: true,
+      user: data,
+      accessToken: token,
+    });
+  } catch (err) {
+    console.log("🚀 ~ file: authControllers.js ~ line 55 ~ signin ~ err", err)
+    res.status(500).send({ error: true, message: err });
+  }
 };
 
 module.exports = {

@@ -5,8 +5,7 @@
     "jest": true
   },
   "extends": [
-    "plugin:react/recommended",
-    "airbnb"
+    "airbnb-base"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,16 +15,10 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react",
     "fp"
   ],
   "rules": {
     "linebreak-style": 0,
-    "react/function-component-definition": 0,
-    "react/jsx-filename-extension": "off",
-    "react/jsx-sort-props": 0,
-    "react/jsx-one-expression-per-line": 0,
-    "react/react-in-jsx-scope": "off",
     "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
     "import/no-extraneous-dependencies": 0,
     "default-param-last": 0,

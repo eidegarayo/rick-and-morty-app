@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import session from './session';
 
 const auth = (response, callback) => {

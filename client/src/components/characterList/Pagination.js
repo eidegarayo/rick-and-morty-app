@@ -18,7 +18,7 @@ const Num = styled.div`
   justify-content: center;
 `;
 
-const Arrow = styled.div`
+const Arrow = styled.button`
   width: 50px;
   height: 50px;
   font-family: ${({ theme }) => theme.titleFont};
@@ -30,6 +30,7 @@ const Arrow = styled.div`
   justify-content: center;
   cursor: pointer;
 `;
+
 
 const Pagination = (props) => {
   const { page, totalPages, onChange } = props;

@@ -6,9 +6,13 @@ const User = require('../models/user');
 
 const api = supertest(app);
 
-describe('Test API route test', () => {
+
+describe('User routes test', () => {
   test('Test api', async () => {
     const response = await api.get('/testAPI');
     expect(response.body === 'Hello world!');
   });
+
+  // get user
+  // save user
 });

@@ -39,10 +39,10 @@ const LinkItem = styled.span`
 
 const CardContainer = styled.div`
   width: 100%;
-  @media (min-width: theme.breakpoints.s) {
+  @media (min-width: ${theme.breakpoints.s}) {
     width: 47%;
   }
-  @media (min-width: theme.breakpoints.md) {
+  @media (min-width: ${theme.breakpoints.md}) {
     width: 31%;
   }
 `;

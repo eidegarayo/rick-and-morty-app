@@ -8,11 +8,10 @@
     "install-client": "cd client && npm install",
     "prestart": "cd server && npm install",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "start": "cross-env NODE_ENV=production cd server && node index",
+    "start": "cross-env NODE_ENV=production node ./server/index",
     "dev-server": "cross-env NODE_ENV=development nodemon ./server/index",
-    "dev-client": "cd client && npm start",
-    "test": "cross-env NODE_ENV=test jest --verbose  --runInBand",
-    "test:watch": "npm run test -- --watch"
+    "dev-test-server": "cross-env NODE_ENV=test nodemon ./server/index",
+    "dev-client": "cd client && npm start"
   },
   "repository": {
     "type": "git",
