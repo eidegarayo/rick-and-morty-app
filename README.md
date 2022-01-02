@@ -1,5 +1,5 @@
 # Rick & Morty Application
-Technical Challenge
+Technical Challenge 
 
 ## Installation
 Install **server** dependencies
@@ -11,7 +11,7 @@ Install **client** dependencies
 ```
 cd client && npm install
 ```
-Launch dev server and client server
+Launch dev server and dev client
 ```
 npm run dev-server
 ```
@@ -34,19 +34,17 @@ SECRET=XXXXXXXXXXXXXXXXXX
 ## Consume from the public API:
 [Rick & Morty](https://rickandmortyapi.com)
 
-
 ## Mandatory libraries
+### Backend:
+- Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 ### Front:
 - React
 - Redux
 
-### Backend:
-- Express
-
 ## Aditional libraries
 ### Backend:
-- nodemon: nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
-- mongoose: is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+- nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+- mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
 - axios
 - bcryptjs
 - jsonwebtoken
