@@ -112,6 +112,3 @@ dist
 
 # VS config
 .vscode
-
-# production
-/build

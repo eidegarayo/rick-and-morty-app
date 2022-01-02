@@ -14,9 +14,6 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "fp"
-  ],
   "rules": {
     "linebreak-style": 0,
     "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
@@ -36,12 +33,6 @@
         ]
       }
     ],
-    "fp/no-mutating-methods": "warn",
-    "fp/no-let": "warn",
-    "fp/no-loops": "warn",
-    "fp/no-mutating-assign": "warn",
-    "fp/no-delete": "warn",
-    "fp/no-this": "warn",
     "complexity": ["warn", 10],
     "max-params": ["warn", 3],
     "max-nested-callbacks": ["warn", 2],
