@@ -4,10 +4,6 @@
     "es2021": true,
     "jest": true
   },
-  "extends": [
-    "airbnb",
-    "airbnb/hooks"
-  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
