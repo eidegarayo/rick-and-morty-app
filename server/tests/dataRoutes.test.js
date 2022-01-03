@@ -18,7 +18,7 @@ const testUser = {
 
 beforeAll(async () => {
   await mongoose.connect(
-    'mongodb://127.0.0.1:27017/rick-and-morty-test',
+    process.env.URL_DB_TEST,
     { useNewUrlParser: true, useUnifiedTopology: true },
   );
 });
@@ -26,10 +26,6 @@ beforeAll(async () => {
 const auth = {};
 
 beforeEach(async () => {
-  process.env = Object.assign(process.env, {
-    URL_DB_TEST: 'mongodb://127.0.0.1:27017/rick-and-morty-test',
-    SECRET: 'd34·koYU^·fnjksliª!34kci',
-  });
   await User.deleteMany();
   const user = new User({ ...testUser, password: bcrypt.hashSync(testUser.password, 8) });
   await user.save();

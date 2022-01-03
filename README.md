@@ -58,6 +58,18 @@ SECRET=XXXXXXXXXXXXXXXXXX
 ## Testing:
 ### Backend
 Backend tested with jest and supertest
+This tests requires the following environment variables:
+```
+NODE_ENV=test
+URL_DB_TEST==mongodb://<HOST>.<PORT>/<DB_NAME>
+SECRET=XXXXXXXXXXXXXXXXXX
+```
 
 ### Frontend
 Frontend tested with cypress
+This tests requires the following environment variables:
+```
+CYPRESS_NODE_ENV=cypress
+CYPRESS_USER_USERNAME=XXXXXXXX
+CYPRESS_USER_PASSWORD=XXXXXXXX
+```
