@@ -17,7 +17,7 @@ const testUser = {
 };
 
 beforeAll(async () => {
-  mongoose.connect(
+  await mongoose.connect(
     'mongodb://127.0.0.1:27017/rick-and-morty-test',
     { useNewUrlParser: true, useUnifiedTopology: true },
   );
@@ -33,8 +33,9 @@ beforeEach(async () => {
   await user.save();
 });
 
-afterAll(() => {
-  mongoose.connection.close();
+afterAll(async () => {
+  await mongoose.connection.dropCollection('users');
+  await mongoose.connection.close();
 });
 
 describe('Account routes test', () => {
@@ -48,8 +49,8 @@ describe('Account routes test', () => {
     await api
       .post('/api/auth/signup')
       .send({
-        username: testUser.username,
-        password: testUser.password,
+        username: 'new_user',
+        password: 'new_password',
       })
       .expect(200);
   });

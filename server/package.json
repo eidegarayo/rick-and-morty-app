@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --setupFiles dotenv/config --verbose",
+    "test": "jest --runInBand --verbose",
     "test:watch": "npm run test -- --watch"
   },
   "author": "",
@@ -25,5 +25,8 @@
     "eslint-plugin-import": "^2.25.3",
     "jest": "^27.4.5",
     "supertest": "^6.1.6"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

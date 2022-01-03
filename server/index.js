@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-underscore-dangle */
 const path = require('path');
 require('dotenv').config();
 

@@ -19,12 +19,13 @@ Cypress.Cookies.debug(true);
 describe('Home page', () => {
   it('Show 7 images', () => {
     cy.visit('/');
+    cy.wait(1000);
     cy.get('img').should('have.length', 7);
   });
 
   it('6 images are from rick and morty api', () => {
     cy.visit('/');
-    cy.wait(500);
+    cy.wait(1000);
     cy.get('img').should('have.length', 7);
     cy.get('img[src^="https://rickandmortyapi.com/api/character/avatar"]')
       .should('have.length', 6);
@@ -52,6 +53,7 @@ describe('Log and add user to redux', () => {
 
 describe('Get character list and pagination', () => {
   it('Get character list first item', () => {
+    cy.addTokenToSession();
     cy.get('a').contains('Character List').click();
     cy.get('img').should('have.length', 21);
     cy.get('img[src^="https://rickandmortyapi.com/api/character/avatar"]')
@@ -59,16 +61,19 @@ describe('Get character list and pagination', () => {
   });
 
   it('Should change page with pagination', () => {
+    cy.addTokenToSession();
     cy.get('button').contains('->').click();
     cy.location().should((loc) => {
       expect(loc.search).to.eq('?page=2');
     });
-    cy.wait(1000);
+    cy.wait(2000);
   });
 });
 
 describe('Go to character and add to favourites', () => {
   it('Go to first character', () => {
+    cy.addTokenToSession();
+    cy.wait(1000);
     cy.contains('LEARN MORE')
       .first()
       .click();
@@ -78,6 +83,7 @@ describe('Go to character and add to favourites', () => {
   });
 
   it('Add character to favourites', () => {
+    cy.addTokenToSession();
     cy.get('svg').first().click();
     cy.wait(1000);
     cy.window().its('store').invoke('getState').then((state) => {

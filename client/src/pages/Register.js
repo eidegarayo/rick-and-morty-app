@@ -64,7 +64,6 @@ const Register = () => {
               onChange={(e) => onChange('username', e.target.value)}
               error={errors.username}
             />
-            <br />
             <Input
               type="password"
               value={userData.password}

@@ -78,6 +78,7 @@ typings/
 .env.production.local
 env.js
 start-cypress.cmd
+start-test.cmd
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

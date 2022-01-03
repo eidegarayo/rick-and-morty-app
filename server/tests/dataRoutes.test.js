@@ -1,8 +1,51 @@
+require('dotenv').config({ path: '../../.env' });
+const mongoose = require('mongoose');
 const supertest = require('supertest');
+const bcrypt = require('bcryptjs');
 
 const app = require('../app');
+const User = require('../models/user');
 
 const api = supertest(app);
+
+
+const testUserId = new mongoose.Types.ObjectId();
+const testUser = {
+  _id: testUserId,
+  username: 'test',
+  password: '123456',
+};
+
+beforeAll(async () => {
+  await mongoose.connect(
+    'mongodb://127.0.0.1:27017/rick-and-morty-test',
+    { useNewUrlParser: true, useUnifiedTopology: true },
+  );
+});
+
+const auth = {};
+
+beforeEach(async () => {
+  process.env = Object.assign(process.env, {
+    URL_DB_TEST: 'mongodb://127.0.0.1:27017/rick-and-morty-test',
+    SECRET: 'd34·koYU^·fnjksliª!34kci',
+  });
+  await User.deleteMany();
+  const user = new User({ ...testUser, password: bcrypt.hashSync(testUser.password, 8) });
+  await user.save();
+  const response = await api
+    .post('/api/auth/signin')
+    .send({
+      username: testUser.username,
+      password: testUser.password,
+    });
+  auth.token = response.body.accessToken;
+});
+
+afterAll(async () => {
+  await mongoose.connection.dropCollection('users');
+  await mongoose.connection.close();
+});
 
 describe('Data routes test', () => {
   test('home-images', async () => {
@@ -18,11 +61,27 @@ describe('Data routes test', () => {
 
   test('character-list with unauthorized token', async () => {
     await api.get('/api/data/character-list')
-      .set('Authorization', 'Bearer ' + token) 
-      .expect(403);
+      .set('x-access-token', 'qwerty')
+      .expect(401);
   });
 
-  // test get character list
+  test('character-list with authorized token', async () => {
+    const response = await api.get('/api/data/character-list')
+      .set('x-access-token', auth.token);
+    expect(response.statusCode).toBe(200);
+    expect(response.body.data.results.length).toBe(20);
+  });
 
-  // test get character 
+  test('character with unauthorized token', async () => {
+    await api.get('/api/data/character/1')
+      .set('x-access-token', 'qwerty')
+      .expect(401);
+  });
+
+  test('character with authorized token', async () => {
+    const response = await api.get('/api/data/character/1')
+      .set('x-access-token', auth.token);
+    expect(response.statusCode).toBe(200);
+    expect(response.body.data.id).toBe(1);
+  });
 });
